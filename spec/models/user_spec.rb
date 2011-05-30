@@ -101,6 +101,19 @@ describe User do
       @user.encrypted_password.should_not be_blank
     end
     
+    
+    describe "has_password? method" do
+      
+      it "should be true if the passwords match" do
+        @user.has_password?(@attr[:password]).should be_true
+      end
+      
+      it "should be false if the passwords do not match" do
+        @user.has_password?("invalid").should be_false
+      end
+      
+    end
+    
   end
   
 end
